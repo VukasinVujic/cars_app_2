@@ -1,5 +1,5 @@
 <template><div class="row">
-    <div class="card col-md-2" v-for="car in cars" :key="car.id">
+    <div class="card col-md-4" v-for="car in cars" :key="car.id">
       <div class="card-body">
         <h5 class="card-title">{{ car.brand }}</h5>
         <p class="card-text">Model: {{ car.model }}</p>

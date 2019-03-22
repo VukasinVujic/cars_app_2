@@ -9,6 +9,9 @@
         <li class="nav-item">
           <router-link :to="{ name: 'cars' }" class="nav-link">Cars <span class="sr-only">(current)</span></router-link>
         </li>
+        <li class="nav-item"> 
+          <router-link :to="{ name: 'add' }" class="nav-link">add Cars </router-link>
+        </li>
       </ul>
       <span class="navbar-text">
         Sample app
