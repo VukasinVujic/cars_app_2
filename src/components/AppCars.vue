@@ -4,7 +4,7 @@
         <h1>Cars holder</h1>
       <div>
 
-        <carList :cars="cars"></carList>
+        <carList :cars="cars" @onDelete="deleteCar"></carList>
 
       </div>
 
@@ -15,6 +15,7 @@
 <script>
 import CarList from '../components/CarList.vue'
 import {cars}  from '../services/CarsServices'
+
 
 
 export default {
@@ -36,6 +37,14 @@ export default {
       }).catch((error) => {
         console.log(error)
       })
+  },
+  methods: {
+    deleteCar(car){
+      cars.remove(car.id)
+        .then((success) => {
+          this.cars = this.cars.filter(c => c !== car)
+        })
+    }
   }
 
 

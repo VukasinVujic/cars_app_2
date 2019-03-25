@@ -16,6 +16,9 @@ export default class CarsServices {
     edit(car){
         return axios.put(`cars/${car.id}` , car )
     }
+    remove(id){
+        return axios.delete(`cars/${id}`)
+    }
 
 
 }

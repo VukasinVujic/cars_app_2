@@ -13,6 +13,7 @@
       </ul>
       <div class="card-body">
        <router-link :to="{name: 'edit', parms:{id: car.id} }"> edit </router-link>
+       <button class="btn btn-danger" @click="onDelete(car)"> Delete </button>
       </div>
     </div>
   </div>
@@ -32,6 +33,9 @@ export default {
         capitalize(str){
             return capitalize(str)
         }
+    },
+    onDelete(car){
+      this.$emit('onDelete',car)
     }
 
 }
