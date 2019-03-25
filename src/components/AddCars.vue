@@ -2,7 +2,7 @@
 
 <div>
 
-<car-form :car="car" @onSubmit="addCar" @onReset="resetForm"> </car-form>
+<car-form :car="car" @onSubmit="onSubmit" @onReset="resetForm"> </car-form>
 
 </div>
     
@@ -22,6 +22,14 @@ export default {
             car: this.getDefaultCar()
         }
     },
+
+    created(){
+        this.$route.params.id && cars.get(this.$route.params.id)
+        .then((response) => {
+            this.car = response.data
+        } )
+    },
+
     methods: {
         addCar(){
            cars.add(this.car).then((success) => {
@@ -47,6 +55,21 @@ export default {
                 numberOfDoors: 4,
                 engine: 'diesel'     
             }
+        },
+        onSubmit(){
+            if(this.car.id){
+                this.editCar()
+            } else {
+                this.addCar()
+            }
+        },
+        editCar(){
+            cars.edit(this.car)
+            .then((success) => {
+                this.redirectToCars()
+            }).catch((error) => {
+                console.log(error);
+            } )
         }    
     }
 
